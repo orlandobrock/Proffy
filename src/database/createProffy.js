@@ -2,22 +2,24 @@ module.exports = async function (
   db,
   { proffyValue, classValue, classScheduleValues }
 ) {
+  // Inserir dados na tabela proffys
   const insertedProffy = await db.run(`
-    INSERT INTO proffys (
-      name,
-      avatar,
-      whatsapp,
-      bio
-    ) VALUES (
-      "${proffyValue.name}",
-      "${proffyValue.avatar}",
-      "${proffyValue.whatsapp}",
-      "${proffyValue.bio}"
-    );
+      INSERT INTO proffys (
+        name,
+        avatar,
+        whatsapp,
+        bio
+      ) VALUES (
+        "${proffyValue.name}",
+        "${proffyValue.avatar}",
+        "${proffyValue.whatsapp}",
+        "${proffyValue.bio}"
+      );
   `);
 
   const proffy_id = insertedProffy.lastID;
 
+  // Inserir dados na tabela classes
   const insertedClass = await db.run(`
       INSERT INTO classes (
         subject,
@@ -28,10 +30,12 @@ module.exports = async function (
         "${classValue.cost}",
         "${proffy_id}"
       );
-   `);
+  `);
+
   const class_id = insertedClass.lastID;
 
-  const insertedAllClassScheduleValues = classScheduleValues.map(
+  //Inserir dados na tabela class_schedule
+  const insertedAllClassesScheduleValues = classScheduleValues.map(
     (classScheduleValue) => {
       return db.run(`
       INSERT INTO class_schedule (
@@ -49,5 +53,5 @@ module.exports = async function (
     }
   );
 
-  await Promise.all(insertedAllClassScheduleValues);
+  await Promise.all(insertedAllClassesScheduleValues);
 };
