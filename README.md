@@ -7,6 +7,7 @@ O projeto está desenvolvido utilizando as seguintes tecnologias:
 - CSS
 - Nunjucks
 - SQLite
+- Node
 ***
 ## ⌨ Como executar o projeto
 
