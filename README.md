@@ -13,10 +13,10 @@ O projeto está desenvolvido utilizando as seguintes tecnologias:
 
 ```
 # Clonar o repositório
-git clone https://github.com/guilhermecapitao/proffy-discovery
+git clone https://github.com/orlandobrock/Proffy.git
 
 # Entrar no diretório
-cd proffy-discovery
+cd Proffy
 
 # Baixar as dependências
 npm i
